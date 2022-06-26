@@ -13,10 +13,10 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public int PersonelId { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int PersonelAd { get; set; }
+        public string PersonelAd { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int PersonelSoyad { get; set; }
+        public string PersonelSoyad { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(250)]
         public string PersonelGorsel { get; set; }

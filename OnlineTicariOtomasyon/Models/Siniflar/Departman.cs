@@ -13,7 +13,7 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public int DepartmanId { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int DepartmanAd { get; set; }
+        public string DepartmanAd { get; set; }
 
         public ICollection<Personel> Personeller{ get; set; }
     }

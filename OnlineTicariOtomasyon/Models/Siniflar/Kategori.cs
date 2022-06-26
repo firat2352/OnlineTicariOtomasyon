@@ -13,8 +13,7 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public int KategoriId { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int KategoriAd { get; set; }
-       
+        public string KategoriAd { get; set; }
 
         public ICollection<Urun> Urunler { get; set; }
     }

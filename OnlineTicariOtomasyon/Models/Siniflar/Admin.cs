@@ -13,12 +13,12 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public int AdminId { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(10)]
-        public int KullaniciAdi { get; set; }
+        public string KullaniciAdi { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int Sifre { get; set; }
+        public string Sifre { get; set; }
 
         [Column(TypeName = "Char"), StringLength(1)]
-        public int Yetki { get; set; }
+        public string Yetki { get; set; }
     }
 }

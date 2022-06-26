@@ -13,16 +13,16 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public int CariId { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int CariAd { get; set; }
+        public string CariAd { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int CariSoyad { get; set; }
+        public string CariSoyad { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(20)]
-        public int CariSehir { get; set; }
+        public string CariSehir { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int CariMail { get; set; }
+        public string CariMail { get; set; }
 
         public SatisHareket SatisHareket { get; set; }
     }

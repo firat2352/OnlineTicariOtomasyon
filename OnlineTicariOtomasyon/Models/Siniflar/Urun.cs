@@ -13,10 +13,10 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public int UrunId { get; set; }
 
         [Column(TypeName ="Varchar"),StringLength(30)]
-        public int UrunAdi { get; set; }
+        public string UrunAdi { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
-        public int Marka { get; set; }
+        public string Marka { get; set; }
         public short Stok { get; set; }
         public decimal AlisFiyat { get; set; }
         public decimal SatisFiyat { get; set; }
