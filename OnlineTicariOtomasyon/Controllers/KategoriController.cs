@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineTicariOtomasyon.Models.Siniflar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,11 @@ namespace OnlineTicariOtomasyon.Controllers
 {
     public class KategoriController : Controller
     {
-        // GET: Kategori
         public ActionResult Index()
         {
-            return View();
+            Context context = new Context();
+            var kategories=context.Kategories.ToList();
+            return View(kategories);
         }
     }
 }
