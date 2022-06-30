@@ -1,16 +1,16 @@
-﻿@using OnlineTicariOtomasyon.Models.Siniflar
-@model Urun
+﻿@model OnlineTicariOtomasyon.Models.Siniflar.Urun
 
 @{
-    ViewBag.Title = "UrunEkle";
+    ViewBag.Title = "UrunGetir";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <br />
-<h4>Ürün Ekle</h4>
+<h4>Ürün Güncelleme</h4>
 <br />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("UrunGuncelle","Urun",FormMethod.Post))
 {
+    @Html.HiddenFor(m=>m.UrunId)
     @Html.LabelFor(m => m.UrunAdi)
     @Html.TextBoxFor(m => m.UrunAdi, new { @class = "form-control" })
     <br />
@@ -27,7 +27,7 @@
     @Html.TextBoxFor(m => m.SatisFiyat, new { @class = "form-control" })
     <br />
     @Html.LabelFor(m => m.Kategori.KategoriId)
-    @Html.DropDownListFor(m=>m.KategoriId,(List<SelectListItem>)ViewBag.DropDownListe,new {@class = "form-control"})
+    @Html.DropDownListFor(m => m.KategoriId, (List<SelectListItem>)ViewBag.DropDownListe, new { @class = "form-control" })
     <br />
     @Html.LabelFor(m => m.UrunGorsel)
     @Html.TextBoxFor(m => m.UrunGorsel, new { @class = "form-control" })
@@ -38,6 +38,3 @@
 
     <button class="btn btn-primary">Kaydet</button>
 }
-
-
-

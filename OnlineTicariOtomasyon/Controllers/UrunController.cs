@@ -18,6 +18,14 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpGet]
         public ActionResult UrunEkle()
         {
+            List<SelectListItem> liste=(from ktgr in _context.Kategories.ToList()
+             select new SelectListItem
+             {
+                 Text = ktgr.KategoriAd,
+                 Value = ktgr.KategoriId.ToString()
+             }).ToList();
+
+            ViewBag.DropDownListe = liste;
             return View();
         }
 
@@ -34,6 +42,38 @@ namespace OnlineTicariOtomasyon.Controllers
         {
             Urun urun=_context.Uruns.Find(id);
             _context.Uruns.Remove(urun);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult UrunGetir(int id)
+        {
+            List<SelectListItem> liste = (from ktgr in _context.Kategories.ToList()
+                                          select new SelectListItem
+                                          {
+                                              Text = ktgr.KategoriAd,
+                                              Value = ktgr.KategoriId.ToString()
+                                          }).ToList();
+
+            ViewBag.DropDownListe = liste;
+            var urun=_context.Uruns.Find(id);
+
+            return View(urun);
+        }
+
+        public ActionResult UrunGuncelle(Urun urun)
+        {
+            var urn=_context.Uruns.Find(urun.UrunId);
+            urn.UrunAdi = urun.UrunAdi;
+            urn.AlisFiyat = urun.AlisFiyat;
+            urn.Durum = urun.Durum;
+            urn.KategoriId = urun.KategoriId;
+            urn.Marka = urun.Marka;
+            urn.SatisFiyat = urun.SatisFiyat;
+            urn.Stok = urun.Stok;
+            urn.UrunGorsel = urun.UrunGorsel;
+
             _context.SaveChanges();
 
             return RedirectToAction("Index");
