@@ -29,5 +29,14 @@ namespace OnlineTicariOtomasyon.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult UrunSil(int id)
+        {
+            Urun urun=_context.Uruns.Find(id);
+            _context.Uruns.Remove(urun);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
