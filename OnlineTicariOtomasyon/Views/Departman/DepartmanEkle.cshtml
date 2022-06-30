@@ -1,0 +1,22 @@
+﻿@using OnlineTicariOtomasyon.Models.Siniflar
+@model Departman
+
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Departman Ekle</h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.DepartmanAd)
+    @Html.TextBoxFor(m => m.DepartmanAd, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Kaydet</button>
+}
+
+
