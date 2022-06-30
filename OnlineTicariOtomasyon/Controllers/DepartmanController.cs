@@ -29,5 +29,28 @@ namespace OnlineTicariOtomasyon.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult DepartmanSil(int id)
+        {
+            Departman departman=_context.Departmans.Find(id);
+            _context.Departmans.Remove(departman);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DepartmanGetir(int id)
+        {
+            return View(_context.Departmans.Find(id));
+        }
+
+        public ActionResult DepartmanGuncelle(Departman departman)
+        {
+            Departman dpr=_context.Departmans.Find(departman.DepartmanId);
+            dpr.DepartmanAd = departman.DepartmanAd;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
