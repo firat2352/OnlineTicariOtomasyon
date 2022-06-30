@@ -1,0 +1,43 @@
+﻿@using OnlineTicariOtomasyon.Models.Siniflar
+@model Urun
+
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h4>Ürün Ekle</h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.UrunAdi)
+    @Html.TextBoxFor(m => m.UrunAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Marka)
+    @Html.TextBoxFor(m => m.Marka, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Stok)
+    @Html.TextBoxFor(m => m.Stok, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.AlisFiyat)
+    @Html.TextBoxFor(m => m.AlisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.SatisFiyat)
+    @Html.TextBoxFor(m => m.SatisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Kategori.KategoriId)
+    @Html.TextBoxFor(m => m.KategoriId, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.UrunGorsel)
+    @Html.TextBoxFor(m => m.UrunGorsel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Durum)
+    @Html.TextBoxFor(m => m.Durum, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Kaydet</button>
+}
+
+
+

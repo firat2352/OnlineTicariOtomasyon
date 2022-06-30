@@ -25,6 +25,8 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar"), StringLength(250)]
         public string UrunGorsel{ get; set; }
 
+        public int KategoriId {get; set; }
+
         public virtual Kategori Kategori { get; set; }
         public ICollection<SatisHareket> SatisHarekets { get; set; }
     }

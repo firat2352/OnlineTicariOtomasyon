@@ -14,5 +14,20 @@ namespace OnlineTicariOtomasyon.Controllers
         {
             return View(_context.Uruns.ToList());
         }
+
+        [HttpGet]
+        public ActionResult UrunEkle()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult UrunEkle(Urun urun)
+        {
+            _context.Uruns.Add(urun);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
