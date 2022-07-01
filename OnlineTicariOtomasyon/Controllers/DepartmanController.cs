@@ -52,5 +52,23 @@ namespace OnlineTicariOtomasyon.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult DepartmanDetay(int id)
+        {
+            var personels = _context.Personels.Where(m => m.PersonelId == id).ToList();
+            var departman = _context.Departmans.Where(m => m.DepartmanId == id).Select(m => m.DepartmanAd).FirstOrDefault();
+
+            ViewBag.departmanAdi = departman;
+            return View(personels);
+        }
+
+        public ActionResult DepartmanPersonelSatis(int id)
+        {
+            var satislar = _context.SatisHarekets.Where(m => m.PersonelId == id).ToList();
+
+            var personel=_context.Personels.Find(id);
+            ViewBag.departmanPersonel = personel.PersonelAd +" "+personel.PersonelSoyad;
+            return View(satislar);
+        }
     }
 }
