@@ -12,7 +12,7 @@ namespace OnlineTicariOtomasyon.Controllers
         Context _context = new Context();
         public ActionResult Index()
         {
-            var departmanlar = _context.Departmans.ToList();
+            var departmanlar = _context.Departmans.Where(m=>m.Durum==true).ToList();
             return View(departmanlar);
         }
 
@@ -25,6 +25,7 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult DepartmanEkle(Departman departman)
         {
+            departman.Durum = true;
             _context.Departmans.Add(departman);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -32,10 +33,9 @@ namespace OnlineTicariOtomasyon.Controllers
 
         public ActionResult DepartmanSil(int id)
         {
-            Departman departman=_context.Departmans.Find(id);
-            _context.Departmans.Remove(departman);
+            var cari = _context.Departmans.Find(id);
+            cari.Durum = false;
             _context.SaveChanges();
-
             return RedirectToAction("Index");
         }
 

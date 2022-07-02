@@ -15,6 +15,8 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar"), StringLength(30)]
         public string KategoriAd { get; set; }
 
+        public bool Durum{ get; set; }
+
         public ICollection<Urun> Urunler { get; set; }
     }
 }

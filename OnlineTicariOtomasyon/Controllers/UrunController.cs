@@ -12,7 +12,7 @@ namespace OnlineTicariOtomasyon.Controllers
         Context _context = new Context();
         public ActionResult Index()
         {
-            return View(_context.Uruns.ToList());
+            return View(_context.Uruns.Where(m=>m.Durum==true).ToList());
         }
 
         [HttpGet]
@@ -33,6 +33,7 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult UrunEkle(Urun urun)
         {
+            urun.Durum = true;
             _context.Uruns.Add(urun);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -41,9 +42,8 @@ namespace OnlineTicariOtomasyon.Controllers
         public ActionResult UrunSil(int id)
         {
             Urun urun=_context.Uruns.Find(id);
-            _context.Uruns.Remove(urun);
+            urun.Durum = false;
             _context.SaveChanges();
-
             return RedirectToAction("Index");
         }
 

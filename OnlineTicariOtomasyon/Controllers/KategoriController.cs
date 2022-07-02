@@ -12,7 +12,7 @@ namespace OnlineTicariOtomasyon.Controllers
         Context _context = new Context();
         public ActionResult Index()
         {
-            var kategories=_context.Kategories.ToList();
+            var kategories=_context.Kategories.Where(m=>m.Durum==true).ToList();
             return View(kategories);
         }
 
@@ -25,6 +25,7 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult KategoriEkle(Kategori kategori)
         {
+            kategori.Durum = true;
             _context.Kategories.Add(kategori);
             _context.SaveChanges();
 
@@ -34,10 +35,9 @@ namespace OnlineTicariOtomasyon.Controllers
 
         public ActionResult KategoriSil(int id)
         {
-            var kategori=_context.Kategories.Find(id);
-            _context.Kategories.Remove(kategori);
+            var katgori = _context.Kategories.Find(id);
+            katgori.Durum = false;
             _context.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
