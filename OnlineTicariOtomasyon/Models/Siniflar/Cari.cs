@@ -12,10 +12,10 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         [Key]
         public int CariId { get; set; }
 
-        [Column(TypeName = "Varchar"), StringLength(30)]
+        [Column(TypeName = "Varchar"), StringLength(30,ErrorMessage ="30'dan fazla karakter giremezsiniz"),Required(ErrorMessage ="Lütfen Cari Adını Giriniz")]
         public string CariAd { get; set; }
 
-        [Column(TypeName = "Varchar"), StringLength(30)]
+        [Column(TypeName = "Varchar"), StringLength(30, ErrorMessage ="30'dan fazla karakter giremezsiniz"), Required(ErrorMessage = "Lütfen Cari Soyadını Giriniz")]
         public string CariSoyad { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(20)]
