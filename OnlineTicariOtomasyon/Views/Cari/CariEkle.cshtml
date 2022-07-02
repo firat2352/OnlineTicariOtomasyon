@@ -1,0 +1,26 @@
+﻿@model OnlineTicariOtomasyon.Models.Siniflar.Cari
+
+@{
+    ViewBag.Title = "CariEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h4>Cari Ekle</h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.CariAd)
+    @Html.TextBoxFor(m => m.CariAd, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.CariSoyad)
+    @Html.TextBoxFor(m => m.CariSoyad, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.CariSehir)
+    @Html.TextBoxFor(m => m.CariSehir, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.CariMail);
+    @Html.TextBoxFor(m => m.CariMail, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+}
