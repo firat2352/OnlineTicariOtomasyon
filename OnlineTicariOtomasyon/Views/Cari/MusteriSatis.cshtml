@@ -1,0 +1,43 @@
+﻿@using OnlineTicariOtomasyon.Models.Siniflar
+@model  List<SatisHareket>
+
+@{
+    ViewBag.Title = "MusteriSatis";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Personel Satış</h4>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"> Cari Adı: @ViewBag.CariDetay</li>
+</ol>
+
+<table class="table table-condensed">
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazdır</th>
+    </tr>
+
+    @foreach (SatisHareket satis in Model)
+    {
+        <tr>
+            <td>@satis.SatisId</td>
+            <td>@satis.Urun.UrunAdi</td>
+            <td>@satis.Personel.PersonelAd @satis.Personel.PersonelSoyad</td>
+            <td>@satis.Fiyat</td>
+            <td>@satis.Adet</td>
+            <td>@satis.ToplamTutar</td>
+            <td>@satis.Tarih</td>
+            <td><a href="#" class="btn btn-default" style="background-color:ButtonShadow">Yazdır</a></td>
+        </tr>
+
+    }
+</table>
+

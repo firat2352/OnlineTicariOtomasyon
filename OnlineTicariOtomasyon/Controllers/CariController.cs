@@ -12,7 +12,7 @@ namespace OnlineTicariOtomasyon.Controllers
         Context _context = new Context();
         public ActionResult Index()
         {
-            return View(_context.Caris.Where(m=>m.Durum==true).ToList());
+            return View(_context.Caris.Where(m => m.Durum == true).ToList());
         }
 
         [HttpGet]
@@ -32,7 +32,7 @@ namespace OnlineTicariOtomasyon.Controllers
 
         public ActionResult CariSil(int id)
         {
-            var cari=_context.Caris.Find(id);
+            var cari = _context.Caris.Find(id);
             cari.Durum = false;
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -46,18 +46,26 @@ namespace OnlineTicariOtomasyon.Controllers
 
         public ActionResult CariGuncelle(Cari cari)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View("CariGetir");
             }
-            var cariFind=_context.Caris.Find(cari.CariId);
+            var cariFind = _context.Caris.Find(cari.CariId);
             cariFind.CariAd = cari.CariAd;
-            cariFind.CariSoyad= cari.CariSoyad;
-            cariFind.CariSehir= cari.CariSehir;
-            cariFind.CariMail= cari.CariMail;
+            cariFind.CariSoyad = cari.CariSoyad;
+            cariFind.CariSehir = cari.CariSehir;
+            cariFind.CariMail = cari.CariMail;
 
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult MusteriSatis(int id)
+        {
+            var satislar = _context.SatisHarekets.Where(m => m.CariId == id).ToList();
+            var cari = _context.Caris.Find(id);
+            ViewBag.CariDetay = cari.CariAd + " " + cari.CariSoyad;
+            return View(satislar);
         }
     }
 }
