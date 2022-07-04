@@ -97,7 +97,14 @@ namespace OnlineTicariOtomasyon.Controllers
 
             _context.SaveChanges();
 
+
             return RedirectToAction("Index");
+        }
+
+        public ActionResult SatisDetay(int id)
+        {
+            var satislar = _context.SatisHarekets.Where(m => m.SatisId == id).ToList();
+            return View(satislar);
         }
     }
 }
