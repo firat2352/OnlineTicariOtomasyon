@@ -18,6 +18,7 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public decimal BirimFiyat { get; set; }
         public decimal Tutar { get; set; }
 
-        public Fatura Faturalar { get; set; }
+        public int FaturaId { get; set; }
+        public virtual Fatura Faturalar { get; set; }
     }
 }
