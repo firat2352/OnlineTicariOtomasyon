@@ -1,0 +1,43 @@
+﻿@using OnlineTicariOtomasyon.Models.Siniflar
+@model IEnumerable<FaturaKalem>
+
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Fatura Detay</h4>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"></li>
+</ol>
+
+<table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Açıklama</th>
+        <th>Miktar</th>
+        <th>Birim Fiyat</th>
+        <th>Tutar</th>
+    </tr>
+
+    @foreach (FaturaKalem faturakalem in Model)
+    {
+        <tr>
+            <td>@faturakalem.FaturaKalemId</td>
+            <td>@faturakalem.Aciklama</td>
+            <td>@faturakalem.Miktar</td>
+            <td>@faturakalem.BirimFiyat</td>
+            <td>@faturakalem.Tutar</td>
+           
+        </tr>
+    }
+
+
+
+</table>
+
+<a href="/Fatura/YeniKalem" class="btn btn-default" style="background-color:darksalmon">Yeni Kalem Girişi</a>
+

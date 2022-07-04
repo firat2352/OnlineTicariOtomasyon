@@ -1,0 +1,35 @@
+﻿
+@model OnlineTicariOtomasyon.Models.Siniflar.FaturaKalem
+
+@{
+    ViewBag.Title = "YeniKalem";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Yeni Kalem Girişi</h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Aciklama)
+    @Html.TextBoxFor(m => m.Aciklama, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Miktar)
+    @Html.TextBoxFor(m => m.Miktar, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.BirimFiyat)
+    @Html.TextBoxFor(m => m.BirimFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Tutar);
+    @Html.TextBoxFor(m => m.Tutar, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.FaturaId);
+    @Html.TextBoxFor(m => m.FaturaId, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Kaydet</button>
+}
+
+
+

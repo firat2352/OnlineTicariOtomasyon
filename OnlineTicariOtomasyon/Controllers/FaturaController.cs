@@ -50,5 +50,25 @@ namespace OnlineTicariOtomasyon.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult FaturaDetay(int id)
+        {
+            return View(_context.FaturaKalems.Where(m=>m.FaturaId==id).ToList());
+        }
+
+        [HttpGet]
+        public ActionResult YeniKalem()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult YeniKalem(FaturaKalem faturaKalem)
+        {
+            _context.FaturaKalems.Add(faturaKalem);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
