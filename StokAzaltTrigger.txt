@@ -1,0 +1,8 @@
+create trigger SatisStokAzalt
+on SatisHarekets
+after insert
+as
+declare @UrunID int
+declare @ADET int
+select @UrunID=UrunId, @ADET=Adet from inserted
+update Uruns set Stok=Stok-@ADET where UrunId=@UrunID
