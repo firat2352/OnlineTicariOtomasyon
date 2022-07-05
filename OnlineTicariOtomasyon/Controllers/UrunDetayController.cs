@@ -12,8 +12,13 @@ namespace OnlineTicariOtomasyon.Controllers
         Context _context = new Context();
         public ActionResult Index()
         {
-           
-            return View(_context.Uruns.Where(x => x.UrunId == 1).ToList());
+            CommonClass common = new CommonClass();
+            //return View(_context.Uruns.Where(x => x.UrunId == 1).ToList());
+
+            common.Deger1 = _context.Uruns.Where(x => x.UrunId == 1).ToList();
+            common.Deger2 = _context.Detays.Where(x => x.DetayId == 1).ToList();
+
+            return View(common);
         }
     }
 }
