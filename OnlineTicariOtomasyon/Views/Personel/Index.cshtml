@@ -12,8 +12,8 @@
         <th>ID</th>
         <th>Personel Adı</th>
         <th>Personel Soyadı</th>
-        <th>Görsel</th>
         <th>Departman</th>
+        <th>Görsel</th>
         <th>Güncelle</th>
         <th>Satışlar</th>
     </tr>
@@ -25,8 +25,8 @@
             <td>@personel.PersonelId</td>
             <td>@personel.PersonelAd</td>
             <td>@personel.PersonelSoyad</td>
-            <td>@personel.PersonelGorsel</td>
             <td>@personel.Departman.DepartmanAd</td>
+            <td><img src="@personel.PersonelGorsel" style="width:100px;height:100px"/></td>
             <td><a href="/Personel/PersonelGetir/@personel.PersonelId" class="btn btn-warning">Güncelle</a></td>
             <td><a href="/Departman/DepartmanPersonelSatis/@personel.PersonelId" class="btn btn-default" style="background-color:lightcoral;color:white">Detaylar</a></td>
         </tr>
