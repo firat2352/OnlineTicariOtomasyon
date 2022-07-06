@@ -25,6 +25,9 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
         public string CariMail { get; set; }
         public bool Durum { get; set; }
 
+        [Column(TypeName = "Varchar"), StringLength(20)]
+        public string CariSifre { get; set; }
+
         public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }
