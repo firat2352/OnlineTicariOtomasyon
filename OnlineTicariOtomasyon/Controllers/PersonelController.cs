@@ -62,5 +62,11 @@ namespace OnlineTicariOtomasyon.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult PersonelYeniTema()
+        {
+            
+            return View(_context.Personels.ToList());
+        }
     }
 }
