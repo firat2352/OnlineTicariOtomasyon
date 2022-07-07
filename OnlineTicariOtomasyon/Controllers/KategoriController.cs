@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace OnlineTicariOtomasyon.Controllers
 {
     public class KategoriController : Controller
     {
         Context _context = new Context();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var kategories=_context.Kategories.Where(m=>m.Durum==true).ToList();
+            var kategories=_context.Kategories.Where(m=>m.Durum==true).ToList().ToPagedList(sayfa,4);
             return View(kategories);
         }
 
