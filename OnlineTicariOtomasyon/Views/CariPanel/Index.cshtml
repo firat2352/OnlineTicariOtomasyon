@@ -1,8 +1,50 @@
-﻿
+﻿@model OnlineTicariOtomasyon.Models.Siniflar.Cari
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CariLayout.cshtml";
 }
+<br />
+<h2>Cari Bilgi Paneli</h2>
+<br />
 
-<h2>Index</h2>
+@using (Html.BeginForm("Index2","CariPanel",FormMethod.Post))
+{
+<table class="table table-bordered">
+    <tr>
+        <td>
+            <label>Mail Adresi: @HttpContext.Current.User.Identity.Name </label>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(m => m.CariAd, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(m => m.CariSoyad, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(m => m.CariSehir, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(m => m.CariMail, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(m => m.CariSifre, new { @class = "form-control" })
+        </td>
+    </tr>
+</table>
+
+<button class="btn btn-primary">Bilgileri Kaydet</button>
+}
+
 
