@@ -10,9 +10,16 @@ namespace OnlineTicariOtomasyon.Controllers
     public class UrunController : Controller
     {
         Context _context = new Context();
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            return View(_context.Uruns.Where(m=>m.Durum==true).ToList());
+            var urunler = from urun in _context.Uruns select urun;
+           
+            if(!string.IsNullOrEmpty(p))
+            {
+                urunler=urunler.Where(x => x.UrunAdi.Contains(p));
+            }
+            return View(urunler.ToList());
+
         }
 
         [HttpGet]
