@@ -9,35 +9,29 @@
 
 <table class="table table-bordered" style="margin-top:20px">
     <tr>
-        <th>ID</th>
-        <th>Seri No</th>
-        <th>Sıra No</th>
-        <th>Vergi Dairesi</th>
+        <th>Seri Sıra No</th>
         <th>Tarih</th>
         <th>Saat</th>
-        <th>Teslim Eden</th>
-        <th>Teslim Alan</th>
-        <th>Toplam</th>
+        @*<th>Toplam</th>*@
         <th>Güncelle</th>
         <th>Detaylar</th>
+        <th>Popup</th>
+        <th>Yeni Kalem</th>
     </tr>
 
 
     @foreach (Fatura fatura in Model)
     {
         <tr>
-            <td>@fatura.FaturaId</td>
-            <td>@fatura.FaturaSeriNo</td>
-            <td>@fatura.FaturaSiraNo</td>
-            <td>@fatura.VergiDairesi</td>
+            <td>@fatura.FaturaSeriNo @fatura.FaturaSiraNo</td>
             <td>@fatura.Tarih</td>
             <td>@fatura.Saat</td>
-            <td>@fatura.TeslimEden</td>
-            <td>@fatura.TeslimAlan</td>
-            <td>@fatura.Toplam</td>
+            @*s<td>@fatura.Toplam</td>*@
            
             <td><a href="/Fatura/FaturaGetir/@fatura.FaturaId" class="btn btn-warning" >Güncelle</a></td>
             <td><a href="/Fatura/FaturaDetay/@fatura.FaturaId" class="btn btn-default" style="background-color:lightcoral;color:white">Detaylar</a></td>
+            <td><a href="/Fatura/FaturaDetay/@fatura.FaturaId" class="btn btn-default" style="background-color:dodgerblue;color:white">Popup</a></td>
+            <td><a href="/Fatura/FaturaDetay/@fatura.FaturaId" class="btn btn-default" style="background-color:thistle;color:white">Ek Kalem</a></td>
         </tr>
     }
 </table>
