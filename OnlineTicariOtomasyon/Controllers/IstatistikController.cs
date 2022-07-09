@@ -1,4 +1,4 @@
-﻿using OnlineTicariOtomasyon.Models.Siniflar;
+﻿""using OnlineTicariOtomasyon.Models.Siniflar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +57,7 @@ namespace OnlineTicariOtomasyon.Controllers
             var dgr15 = _context.SatisHarekets.Count(m => m.Tarih==DateTime.Today).ToString();
             ViewBag.satisBugun= dgr15;
 
-            var dgr16 = _context.SatisHarekets.Where(x => x.Tarih == DateTime.Today).Sum(y => y.ToplamTutar).ToString();
+            var dgr16 = _context.SatisHarekets.Where(x => x.Tarih == DateTime.Today).Sum(y =>(decimal?) y.ToplamTutar).ToString();
             ViewBag.satisBugunToplam = dgr16;
 
             return View();
