@@ -24,6 +24,7 @@
         <th>Kategori</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Satış Yap</th>
     </tr>
 
     @foreach (Urun urun in Model)
@@ -37,6 +38,7 @@
             <td>@urun.Kategori.KategoriAd</td>
             <td><a href="/Urun/UrunSil/@urun.UrunId" class="btn btn-danger">Sil</a></td>
             <td><a href="/Urun/UrunGetir/@urun.UrunId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Urun/SatisYap/@urun.UrunId" class="btn btn-default" style="background-color:yellow">Satış Yap</a></td>
         </tr>
     }
 

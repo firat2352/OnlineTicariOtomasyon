@@ -90,5 +90,32 @@ namespace OnlineTicariOtomasyon.Controllers
         {
             return View(_context.Uruns.ToList());
         }
+
+       [HttpGet]
+        public ActionResult SatisYap(int id)
+        {
+
+            List<SelectListItem> personeller = (from personel in _context.Personels.ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = personel.PersonelAd + " " + personel.PersonelSoyad,
+                                                    Value = personel.PersonelId.ToString(),
+                                                }).ToList();
+            ViewBag.personeller = personeller;
+            var urunFind = _context.Uruns.Find(id);
+            ViewBag.urunFind = urunFind.UrunId;
+            ViewBag.urunFindFiyat = urunFind.SatisFiyat;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SatisYap(SatisHareket satisHareket)
+        {
+            satisHareket.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            _context.SatisHarekets.Add(satisHareket);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index","Satis");
+        }
     }
 }
