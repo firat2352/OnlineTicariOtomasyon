@@ -13,7 +13,7 @@
 @using (Html.BeginForm("Index", "Kargo", FormMethod.Get))
 {
     <p>
-        Kargo Takip Numarası: @Html.TextBox("p")
+        Kargo Takip Numarası: @Html.TextBox("aranacakDeger")
         <input type="submit" value="Ara" />
     </p>
 
@@ -24,6 +24,7 @@
 
         <th>Personel</th>
         <th>Alıcı</th>
+        <th>Takip Kodu</th>
         <th>Tarih</th>
         <th>Detaylar</th>
     </tr>
@@ -34,9 +35,10 @@
         <tr>
             <td>@kargo.Personel</td>
             <td>@kargo.Alici</td>
+            <td>@kargo.TakipKodu</td>
             <td>@kargo.Tarih</td>
 
-            <td><a href="/Departman/DepartmanSil/@kargo.KargoDetayId" class="btn btn-warning">Detaylar</a></td>
+            <td><a href="/Kargo/KargoTakip/@kargo.TakipKodu" class="btn btn-warning">Detaylar</a></td>
 
         </tr>
     }

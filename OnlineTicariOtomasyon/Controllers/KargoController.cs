@@ -10,12 +10,17 @@ namespace OnlineTicariOtomasyon.Controllers
     public class KargoController : Controller
     {
         Context _context = new Context();
-        public ActionResult Index()
+        public ActionResult Index(string aranacakDeger)
         {
-           
 
-            var kargolar=_context.KargoDetays.ToList();
-            return View(kargolar);
+            var kargolar= from kargo in _context.KargoDetays select kargo;
+
+            if (!string.IsNullOrEmpty(aranacakDeger))
+            {
+                kargolar= kargolar.Where(x => x.TakipKodu.Contains(aranacakDeger));
+            }
+            return View(kargolar.ToList());
+
         }
 
         [HttpGet]
@@ -41,6 +46,13 @@ namespace OnlineTicariOtomasyon.Controllers
             _context.KargoDetays.Add(kargoDetay);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult KargoTakip(string id)
+        {
+            var kayitlar = _context.KargoTakips.Where(m => m.TakipKodu == id).ToList();
+           
+            return View(kayitlar);
         }
     }
 }
