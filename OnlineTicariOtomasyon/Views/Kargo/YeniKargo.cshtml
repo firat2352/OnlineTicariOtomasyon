@@ -1,0 +1,34 @@
+﻿
+@model OnlineTicariOtomasyon.Models.Siniflar.KargoDetay
+
+@{
+    ViewBag.Title = "YeniKargo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Yeni Kargo Ekle</h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.TakipKodu)
+    @Html.TextBoxFor(m => m.TakipKodu, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Personel)
+    @Html.TextBoxFor(m => m.Personel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Alici)
+    @Html.TextBoxFor(m => m.Alici, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Tarih)
+    <input type="date" class="form-control" name="Tarih" />
+    <br />
+    @Html.LabelFor(m => m.Aciklama)
+    @Html.TextAreaFor(m => m.Aciklama, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Kaydet</button>
+}
+
+
