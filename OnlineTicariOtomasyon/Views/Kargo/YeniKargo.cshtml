@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "YeniKargo";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+} 
 
 <br />
 <h4>Yeni Kargo Ekle</h4>
@@ -12,8 +12,9 @@
 
 @using (Html.BeginForm())
 {
+
     @Html.LabelFor(m => m.TakipKodu)
-    @Html.TextBoxFor(m => m.TakipKodu, new { @class = "form-control" })
+    <input type="text" name="TakipKodu" value="@ViewBag.takipKodu "  class="form-control"  />
     <br />
     @Html.LabelFor(m => m.Personel)
     @Html.TextBoxFor(m => m.Personel, new { @class = "form-control" })

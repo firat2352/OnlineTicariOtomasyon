@@ -12,6 +12,8 @@ namespace OnlineTicariOtomasyon.Controllers
         Context _context = new Context();
         public ActionResult Index()
         {
+           
+
             var kargolar=_context.KargoDetays.ToList();
             return View(kargolar);
         }
@@ -19,6 +21,17 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpGet]
         public ActionResult YeniKargo()
         {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[9];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            ViewBag.takipKodu = finalString;
             return View();
         }
 
