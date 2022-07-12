@@ -30,7 +30,8 @@ namespace OnlineTicariOtomasyon.Controllers
 
         public ActionResult GelenMesajlar()
         {
-            return View();
+            
+            return View(_context.Mesajs.ToList());
         }
 
     //    [HttpGet]
