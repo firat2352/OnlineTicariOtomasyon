@@ -30,8 +30,11 @@ namespace OnlineTicariOtomasyon.Controllers
 
         public ActionResult GelenMesajlar()
         {
-            
-            return View(_context.Mesajs.ToList());
+            var mail = Session["CariMail"].ToString();
+            var mesajlar = _context.Mesajs.Where(x => x.Alici == mail).ToList();
+            var gelenMesajSayisi = _context.Mesajs.Count(x => x.Alici == mail).ToString();
+            ViewBag.MesajSayisi = gelenMesajSayisi;
+            return View(mesajlar);
         }
 
     //    [HttpGet]
