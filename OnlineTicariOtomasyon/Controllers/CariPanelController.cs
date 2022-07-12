@@ -28,9 +28,21 @@ namespace OnlineTicariOtomasyon.Controllers
             return View(degerler);
         }
 
-        public ActionResult Index2()
+        public ActionResult GelenMesajlar()
         {
             return View();
         }
+
+    //    [HttpGet]
+    //    public ActionResult YeniMesaj()
+    //    {
+    //        return View();
+    //    }
+
+    //    [HttpPost]
+    //    public ActionResult YeniMesaj()
+    //    {
+    //        return View();
+    //    }
     }
 }
