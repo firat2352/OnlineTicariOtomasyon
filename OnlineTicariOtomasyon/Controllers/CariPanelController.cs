@@ -73,16 +73,26 @@ namespace OnlineTicariOtomasyon.Controllers
             return View(mesaj);
         }
 
-        //    [HttpGet]
-        //    public ActionResult YeniMesaj()
-        //    {
-        //        return View();
-        //    }
 
-        //    [HttpPost]
-        //    public ActionResult YeniMesaj()
-        //    {
-        //        return View();
-        //    }
+        [HttpGet]
+        public ActionResult YeniMesaj()
+        {
+            var mail = Session["CariMail"].ToString();
+
+            var gelenMesajSayisi = _context.Mesajs.Count(x => x.Alici == mail).ToString();
+            ViewBag.gelenMesajSayisi = gelenMesajSayisi;
+
+            var gidenMesajSayisi = _context.Mesajs.Count(x => x.Gonderici == mail).ToString();
+            ViewBag.gidenMesajSayisi = gidenMesajSayisi;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult YeniMesaj(Mesaj mesaj)
+        {
+            _context.Mesajs.Add(mesaj);
+            _context.SaveChanges();
+            return View();
+        }
     }
 }
