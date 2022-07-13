@@ -16,7 +16,11 @@ namespace OnlineTicariOtomasyon.Controllers
         public ActionResult Index()
         {
             var mail = Session["CariMail"].ToString();
-            var result = _context.Caris.FirstOrDefault(x => x.CariMail == mail);
+            var result = _context.Caris.Where(x => x.CariMail == mail).ToList();
+            var mailId = _context.Caris.Where(x => x.CariMail == mail).Select(y => y.CariId).FirstOrDefault();
+            ViewBag.mailId = mailId;
+            var toplamSatis = _context.SatisHarekets.Where(x => x.CariId == mailId).Count();
+            ViewBag.toplamSatis = toplamSatis;
             ViewBag.Mail = mail;
             return View(result);
         }
