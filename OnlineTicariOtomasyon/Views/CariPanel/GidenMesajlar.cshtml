@@ -1,13 +1,14 @@
-﻿@using OnlineTicariOtomasyon.Models.Siniflar
+﻿
+@using OnlineTicariOtomasyon.Models.Siniflar
 @model List<Mesaj>
 
 @{
-
-    ViewBag.Title = "GelenMesajlar";
-
+    ViewBag.Title = "GidenMesajlar";
     Layout = "~/Views/Shared/_CariLayout.cshtml";
-
 }
+
+
+
 
 <!DOCTYPE html>
 
@@ -330,35 +331,35 @@
                                     @foreach (var item in Model)
                                     {
 
-                                    <tr>
+                                        <tr>
 
-                                        <td>
+                                            <td>
 
-                                            <div class="icheck-primary">
+                                                <div class="icheck-primary">
 
-                                                <input type="checkbox" value="" id="check1">
+                                                    <input type="checkbox" value="" id="check1">
 
-                                                <label for="check1"></label>
+                                                    <label for="check1"></label>
 
-                                            </div>
+                                                </div>
 
-                                        </td>
+                                            </td>
 
-                                        <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
 
-                                        <td class="mailbox-name"><a href="read-mail.html">@item.Gonderici</a></td>
+                                            <td class="mailbox-name"><a href="read-mail.html">@item.Alici</a></td>
 
-                                        <td class="mailbox-subject">
+                                            <td class="mailbox-subject">
 
-                                            <b>@item.Konu</b> - @item.İcerik.Substring(0,20).ToString()
+                                                <b>@item.Konu</b> - @item.İcerik.Substring(0, 20).ToString()
 
-                                        </td>
+                                            </td>
 
-                                        <td class="mailbox-attachment"></td>
+                                            <td class="mailbox-attachment"></td>
 
-                                        <td class="mailbox-date">@item.Tarih.ToShortDateString()</td>
+                                            <td class="mailbox-date">@item.Tarih.ToShortDateString()</td>
 
-                                    </tr>
+                                        </tr>
                                     }
                                 </tbody>
 
@@ -451,7 +452,7 @@
     <!-- Page Script -->
 
     <script>
-    $(function () {
+        $(function () {
 
             //Enable check and uncheck all functionality
 
@@ -530,3 +531,4 @@
 </body>
 
 </html>
+

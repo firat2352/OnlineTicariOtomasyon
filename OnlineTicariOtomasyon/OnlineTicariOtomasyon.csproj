@@ -2927,6 +2927,7 @@
     <Content Include="Views\Kargo\KargoTakip.cshtml" />
     <Content Include="Views\QR\Index.cshtml" />
     <Content Include="Views\CariPanel\GelenMesajlar.cshtml" />
+    <Content Include="Views\CariPanel\GidenMesajlar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

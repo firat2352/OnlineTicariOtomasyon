@@ -31,22 +31,43 @@ namespace OnlineTicariOtomasyon.Controllers
         public ActionResult GelenMesajlar()
         {
             var mail = Session["CariMail"].ToString();
+
             var mesajlar = _context.Mesajs.Where(x => x.Alici == mail).ToList();
+
             var gelenMesajSayisi = _context.Mesajs.Count(x => x.Alici == mail).ToString();
-            ViewBag.MesajSayisi = gelenMesajSayisi;
+            ViewBag.gelenMesajSayisi = gelenMesajSayisi;
+
+            var gidenMesajSayisi = _context.Mesajs.Count(x => x.Gonderici == mail).ToString();
+            ViewBag.gidenMesajSayisi = gidenMesajSayisi;
+
             return View(mesajlar);
         }
 
-    //    [HttpGet]
-    //    public ActionResult YeniMesaj()
-    //    {
-    //        return View();
-    //    }
+        public ActionResult GidenMesajlar()
+        {
+            var mail = Session["CariMail"].ToString();
 
-    //    [HttpPost]
-    //    public ActionResult YeniMesaj()
-    //    {
-    //        return View();
-    //    }
+            var mesajlar = _context.Mesajs.Where(x => x.Gonderici == mail).ToList();
+
+            var gidenMesajSayisi = _context.Mesajs.Count(x => x.Gonderici == mail).ToString();
+            ViewBag.gidenMesajSayisi = gidenMesajSayisi;
+
+            var gelenMesajSayisi = _context.Mesajs.Count(x => x.Alici == mail).ToString();
+            ViewBag.gelenMesajSayisi = gelenMesajSayisi;
+
+            return View(mesajlar);
+        }
+
+        //    [HttpGet]
+        //    public ActionResult YeniMesaj()
+        //    {
+        //        return View();
+        //    }
+
+        //    [HttpPost]
+        //    public ActionResult YeniMesaj()
+        //    {
+        //        return View();
+        //    }
     }
 }
