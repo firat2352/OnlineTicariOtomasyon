@@ -136,5 +136,14 @@ namespace OnlineTicariOtomasyon.Controllers
             Session.Abandon();
             return RedirectToAction("Index", "Login");
         }
+
+        public PartialViewResult Partial1()
+        {
+            var mail = Session["CariMail"].ToString();
+            var id = _context.Caris.Where(x => x.CariMail == mail).Select(y => y.CariId).FirstOrDefault();
+            var cari = _context.Caris.Find(id);
+
+            return PartialView("Partial1", cari);
+        }
     }
 }
