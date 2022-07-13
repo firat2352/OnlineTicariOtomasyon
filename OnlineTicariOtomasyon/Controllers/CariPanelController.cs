@@ -32,7 +32,7 @@ namespace OnlineTicariOtomasyon.Controllers
         {
             var mail = Session["CariMail"].ToString();
 
-            var mesajlar = _context.Mesajs.Where(x => x.Alici == mail).ToList();
+            var mesajlar = _context.Mesajs.Where(x => x.Alici == mail).OrderByDescending(x=>x.MesajID).ToList();
 
             var gelenMesajSayisi = _context.Mesajs.Count(x => x.Alici == mail).ToString();
             ViewBag.gelenMesajSayisi = gelenMesajSayisi;
@@ -47,7 +47,7 @@ namespace OnlineTicariOtomasyon.Controllers
         {
             var mail = Session["CariMail"].ToString();
 
-            var mesajlar = _context.Mesajs.Where(x => x.Gonderici == mail).ToList();
+            var mesajlar = _context.Mesajs.Where(x => x.Gonderici == mail).OrderByDescending(z=>z.MesajID).ToList();
 
             var gidenMesajSayisi = _context.Mesajs.Count(x => x.Gonderici == mail).ToString();
             ViewBag.gidenMesajSayisi = gidenMesajSayisi;
@@ -90,6 +90,10 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult YeniMesaj(Mesaj mesaj)
         {
+            var mail = Session["CariMail"].ToString();
+            mesaj.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            mesaj.Gonderici = mail;
+
             _context.Mesajs.Add(mesaj);
             _context.SaveChanges();
             return View();
