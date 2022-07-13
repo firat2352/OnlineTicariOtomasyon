@@ -2,10 +2,12 @@
 
 
 
-@using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+@using (Html.BeginForm("CariBilgiGuncelle", "CariPanel", FormMethod.Post))
 {
 
 <form class="form-horizontal">
+
+    @Html.HiddenFor(m=>m.CariId)
 
     <div class="form-group row">
 

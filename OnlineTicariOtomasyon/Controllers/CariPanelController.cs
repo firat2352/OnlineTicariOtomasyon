@@ -145,5 +145,19 @@ namespace OnlineTicariOtomasyon.Controllers
 
             return PartialView("Partial1", cari);
         }
+
+        public ActionResult CariBilgiGuncelle(Cari cari)
+        {
+            var cariFind = _context.Caris.Find(cari.CariId);
+            cariFind.CariAd = cari.CariAd;
+            cariFind.CariSoyad = cari.CariSoyad;
+            cariFind.CariSehir = cari.CariSehir;
+            cariFind.CariMail = cari.CariMail;
+            cariFind.CariSifre = cari.CariSifre;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
