@@ -70,5 +70,45 @@ namespace OnlineTicariOtomasyon.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Dinamik()
+        {
+            DinamikFatura dinamikFatura = new DinamikFatura();
+            dinamikFatura.FaturaProp = _context.Faturas.ToList();
+            dinamikFatura.FaturaKalemProp = _context.FaturaKalems.ToList();
+
+            return View(dinamikFatura);
+        }
+
+        public ActionResult FaturaKaydet(string FaturaSeriNo,string FaturaSiraNo,DateTime Tarih,string VergiDairesi,string Saat,string TeslimEden,string TeslimAlan,string Toplam,FaturaKalem[] kalemler)
+        {
+            Fatura fatura = new Fatura();
+            fatura.FaturaSeriNo = FaturaSeriNo;
+            fatura.FaturaSiraNo = FaturaSiraNo;
+            fatura.Tarih = Tarih;
+            fatura.Saat = Saat;
+            fatura.TeslimEden = TeslimEden;
+            fatura.TeslimAlan = TeslimAlan;
+            fatura.Toplam = decimal.Parse(Toplam);
+
+            _context.Faturas.Add(fatura);
+
+            foreach (var item in kalemler)
+            {
+                FaturaKalem faturaKalem = new FaturaKalem();
+                faturaKalem.Aciklama = item.Aciklama;
+                faturaKalem.BirimFiyat = item.BirimFiyat;
+                faturaKalem.FaturaId = item.FaturaKalemId;
+                faturaKalem.Miktar = item.Miktar;
+                faturaKalem.Tutar = item.Tutar;
+
+                _context.FaturaKalems.Add(faturaKalem);
+               
+
+            }
+            _context.SaveChanges();
+
+            return Json("Fatura Kaydı Başarılı", JsonRequestBehavior.AllowGet);
+        }
     }
 }
