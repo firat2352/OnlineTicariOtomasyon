@@ -16,6 +16,7 @@ namespace OnlineTicariOtomasyon.Controllers
             return View(departmanlar);
         }
 
+        [Authorize(Roles ="A")]
         [HttpGet]
         public ActionResult DepartmanEkle()
         {
